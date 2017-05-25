@@ -1,4 +1,5 @@
 FROM php:5.6-fpm
+
 ADD debian8.sources /etc/apt/sources.list
 # extions
 
@@ -87,5 +88,7 @@ RUN docker-php-ext-enable xdebug
 # extends from parent
 # EXPOSE 9000
 # CMD ["php-fpm"]
-
+# 解决时区问题
+ENV TZ "Asia/Shanghai"
+ENV TERM xterm
 

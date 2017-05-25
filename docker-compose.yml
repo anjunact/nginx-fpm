@@ -4,11 +4,23 @@ web:
     - "80:80"
   volumes:
     - /home/anjun/svn/address_order:/code
+    - ./logs/nginx:/var/log/nginx
     - ./site.conf:/etc/nginx/conf.d/site.conf
   links:
     - php
+  restart: always
 php:
   # image: php:5.6-fpm
   build: ./fpm
   volumes:
     - /home/anjun/svn/address_order:/code
+# mysql:
+#   image: mariadb
+#   ports:
+#     - '3306:3306'
+#   volumes:
+#     - ./db-data:/var/lib/mysql
+#   environment:
+#     - MYSQL_PORT_PASSWORD=123456
+#   restart: always
+
